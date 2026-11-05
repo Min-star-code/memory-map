@@ -5,9 +5,11 @@ arrow change line by line, then check yourself with a few questions per topic.
 Built for students moving from Racket to C, where pointers and memory are the
 usual sticking point.
 
-**Status:** first version (MVP). One chapter, *Pointers*, with 5 topics,
-5 step-by-step examples and 15 questions. The other nine chapters in the plan
-are listed on the home page as "coming later".
+**Status:** early prototype (v0.1, November 2026). One chapter, *Pointers*,
+with 5 topics, 5 step-by-step examples and 15 questions. The other nine chapters
+in the plan are listed on the home page as "coming later". This version tests the
+core idea; the next version will be redesigned closer to the original plan, with
+work planned for winter break 2026. See [NEXT_VERSION.md](NEXT_VERSION.md).
 
 ## Features
 - **Step-by-step memory diagrams.** Code on the left with the current line
