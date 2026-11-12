@@ -18,7 +18,9 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # Pinned: Playwright's --with-deps installs system packages per Ubuntu release,
+    # and ubuntu-latest is moving to Ubuntu 26.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
