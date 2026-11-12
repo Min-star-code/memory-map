@@ -44,16 +44,54 @@ work planned for winter break 2026. See [NEXT_VERSION.md](NEXT_VERSION.md).
   answering all questions in a topic turns it green and saves progress, corrupted
   saved data is ignored, Esc closes the panel.
 
+`npm run test:e2e` runs 15 Playwright end-to-end tests in Chromium against the
+production build (`vite preview`):
+- **Stepping (desktop, 1280 px):** each of the 5 examples is stepped from first to
+  last line. At every step the test checks the highlighted code line, every
+  stack and heap value, the number of arrows, and that each arrow starts on its
+  pointer and ends at its target box (dangling arrows to freed blocks included).
+  Expected values are read from the same content data the site renders.
+  Also: arrow-key stepping, Esc to close, the home page → chapter → topic flow.
+- **Questions and progress:** wrong answers give feedback and do not count,
+  answering a whole topic marks it mastered on the map, progress is written to
+  `localStorage` and survives a reload, the chapter can be completed to 100%,
+  and corrupted saved data is ignored.
+- **Phone (390 px, touch):** the outline list replaces the map, no sideways
+  scrolling, a topic opens full screen, arrows still land on their targets, and
+  answering a question updates the outline.
+
+Tests find elements by role and label where possible, plus a few `data-testid`s
+(`memory`, `arrows`, `question-<id>`).
+
+### Running the tests
+```bash
+npm install
+npx playwright install chromium   # once, downloads the browser
+npm run lint
+npm run typecheck                 # app, configs and E2E tests
+npm test                          # Vitest
+npm run test:e2e                  # Playwright (builds and serves the site itself)
+npm run test:all                  # all of the above in order
+npx playwright test --ui          # Playwright UI mode for debugging
+```
+
+### Continuous integration
+GitHub Actions (`.github/workflows/ci.yml`) runs lint, typecheck, Vitest and
+Playwright on every pull request and on pushes to other branches. If Playwright
+fails, the HTML report and failure screenshots are uploaded as the
+`playwright-report` artifact. Pushes to `main` run the same job from
+`deploy.yml`, and the site is only built and deployed to GitHub Pages after it
+passes.
+
 ## Run locally
 ```bash
 npm install
 npm run dev      # development server
-npm test         # tests
 npm run build    # production build in dist/
 ```
 
 ## Stack
-React 19, TypeScript, Vite, Vitest, React Testing Library. No UI or chart
+React 19, TypeScript, Vite, Vitest, React Testing Library, Playwright, GitHub Actions. No UI or chart
 libraries: the concept map, memory diagram, arrows and syntax colouring are
 written for this project.
 

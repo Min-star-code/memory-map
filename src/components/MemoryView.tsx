@@ -79,7 +79,7 @@ export function MemoryView({ step }: { step: Step }) {
   const frames = [...step.stack].reverse();
 
   return (
-    <div className="memory" ref={wrapRef}>
+    <div className="memory" ref={wrapRef} data-testid="memory">
       <section className="mem-col" aria-label="Stack">
         <h4 className="mem-title">Stack</h4>
         {frames.map((f, i) => (
@@ -111,7 +111,7 @@ export function MemoryView({ step }: { step: Step }) {
           </div>
         ))}
       </section>
-      <svg className="arrows" aria-hidden="true">
+      <svg className="arrows" aria-hidden="true" data-testid="arrows">
         <defs>
           <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" className="arrow-head" />

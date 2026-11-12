@@ -24,7 +24,7 @@ export function QuestionCard({ q, index, solved, onCorrect }: Props) {
   const ready = q.kind === 'choice' ? choice !== null : text.trim() !== '';
 
   return (
-    <div className={'question' + (solved ? ' solved' : '')}>
+    <div className={'question' + (solved ? ' solved' : '')} data-testid={`question-${q.id}`}>
       <div className="q-head">
         <span className="q-num">Q{index + 1}</span>
         {solved ? <span className="badge ok">✓ Solved</span> : null}
