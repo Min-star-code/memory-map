@@ -11,6 +11,17 @@ in the plan are listed on the home page as "coming later". This version tests th
 core idea; the next version will be redesigned closer to the original plan, with
 work planned for winter break 2026. See [NEXT_VERSION.md](NEXT_VERSION.md).
 
+![Step 3 of the malloc and free example: line 3 is highlighted, the stack box p holds 0x5a0 and an arrow points to the heap box holding 42](docs/heap_step.png)
+
+*Stepping through `malloc` and `free`: the highlighted line, the stack, the heap and the pointer
+arrow all update together. Below the trace are the questions for that topic.*
+
+<details><summary>Home page</summary>
+
+![Home page with the Pointers chapter available and nine chapters marked coming later](docs/home.png)
+
+</details>
+
 ## Features
 - **Step-by-step memory diagrams.** Code on the left with the current line
   highlighted; stack frames and heap blocks on the right. Pointer arrows are SVG
